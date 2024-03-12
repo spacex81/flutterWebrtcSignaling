@@ -50,3 +50,7 @@ IO.on("connection", (socket) => {
     });
   });
 });
+
+IO.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
