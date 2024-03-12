@@ -6,6 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 8080;
 const io = socketIo(server, {
+  path: '/api/websocket',
   cors: {
     origin: "*",
     methods: ["GET", "POST"]

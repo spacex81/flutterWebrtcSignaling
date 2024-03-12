@@ -1,0 +1,83 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Socket.IO Test Client</title>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const socket = io('wss://komaki.tech/api/websocket', {
+                transports: ['websocket'],
+                query: {
+                    callerId: 'testCallerId' // Replace this with an actual caller ID if needed
+                }
+            });
+
+            socket.on('connect', function() {
+                console.log('Connected to wss://komaki.tech/api/websocket');
+            });
+
+            socket.on('connect_error', function(error) {
+                console.log('Connection error:', error);
+            });
+
+            // Add more event listeners as needed
+            // Example: Listening for a custom event
+            /*
+            socket.on('myCustomEvent', function(data) {
+                console.log('Received myCustomEvent:', data);
+            });
+            */
+
+            // Example: Emitting an event to the server
+            /*
+            socket.emit('myEvent', { myData: 'data' });
+            */
+        });
+    </script>
+</head>
+<body>
+    <h1>Socket.IO Test Client</h1>
+    <p>Check the browser console for connection logs.</p>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test Client</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Note: Vanilla WebSocket doesn't support query parameters in the URL.
+            // If you need to pass parameters like 'callerId', you'll need to find an alternative method,
+            // such as using a custom protocol or sending a message after establishing the connection.
+            const websocketUrl = 'wss://komaki.tech/api/websocket';
+            const socket = new WebSocket(websocketUrl);
+
+            socket.addEventListener('open', function(event) {
+                console.log('Connected to', websocketUrl);
+
+                // Example: Sending a message after connection is established
+                // socket.send(JSON.stringify({ action: 'register', callerId: 'testCallerId' }));
+            });
+
+            socket.addEventListener('message', function(event) {
+                console.log('Message from server', event.data);
+            });
+
+            socket.addEventListener('close', function(event) {
+                console.log('Disconnected from', websocketUrl);
+            });
+
+            socket.addEventListener('error', function(error) {
+                console.log('WebSocket error:', error);
+            });
+
+            // Add more event listeners as needed
+        });
+    </script>
+</head>
+<body>
+    <h1>WebSocket Test Client</h1>
+    <p>Check the browser console for connection logs.</p>
+</body>
+</html>
